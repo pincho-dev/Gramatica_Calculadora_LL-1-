@@ -1,0 +1,8 @@
+x = 3 + 4 * 2;
+print(x);
+y = Sin(0) + Cos(0);
+print(y);
+z = abs(-5) - Tan(0);
+print(z);
+w = (x + y) % 5;
+print(w);

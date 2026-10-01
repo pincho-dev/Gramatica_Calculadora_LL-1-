@@ -36,6 +36,15 @@ class FuncCall:
     line: int
 
 
+@dataclass
+class Angle:
+    expr1: Expr
+    expr2: Expr
+    line: int
+    
+Expr = Union[Num, Var, UnaryMinus, BinOp, FuncCall, Angle]
+
+
 
 
 @dataclass
@@ -57,11 +66,3 @@ Stmt = Union[Assign, Print]
 @dataclass
 class Program:
     statements: List[Stmt]
-
-@dataclass
-class Angle:
-    expr1: Expr
-    expr2: Expr
-    line: int
-    
-Expr = Union[Num, Var, UnaryMinus, BinOp, FuncCall, Angle]

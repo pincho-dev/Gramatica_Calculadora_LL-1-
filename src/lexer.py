@@ -41,7 +41,6 @@ _TOKEN_SPEC = [
     ("NEWLINE", r"\n"),
     ("SKIP", r"[ \t]+"),
     ("MISMATCH", r"."),
-    ("ANGLE", r"°"),
 ]
 
 _MASTER_RE = re.compile("|".join(f"(?P<{nombre}>{patron})" for nombre, patron in _TOKEN_SPEC))

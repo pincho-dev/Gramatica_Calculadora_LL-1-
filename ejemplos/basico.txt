@@ -6,3 +6,6 @@ z = abs(-5) - Tan(0);
 print(z);
 w = (x + y) % 5;
 print(w);
+
+c = angle(-30, 45);
+print(c);

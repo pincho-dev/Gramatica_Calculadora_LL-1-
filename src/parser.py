@@ -142,7 +142,7 @@ class Parser:
             expr = self.parse_expr()
             self.expect("RPAREN")
             return FuncCall(tok.type, expr, tok.line)
-        if tok.type == "ANGLE":
+        if tok.type == "angle":
             self.advance()
             self.expect("LPAREN")
             expr1 = self.parse_expr()

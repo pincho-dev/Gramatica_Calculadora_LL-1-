@@ -10,11 +10,11 @@ GRAMMAR = {
     "Expr'":      [["+", "Term", "Expr'"], ["-", "Term", "Expr'"], []],
     "Term":       [["Factor", "Term'"]],
     "Term'":      [["*", "Factor", "Term'"], ["/", "Factor", "Term'"], ["%", "Factor", "Term'"], []],
-    "Factor":     [["(", "Expr", ")"], ["id"], ["num"], ["-", "Factor"], ["Funcion", "(", "Expr", ")"]],
+    "Factor":     [["(", "Expr", ")"], ["id"], ["num"], ["-", "Factor"], ["Funcion", "(", "Expr", ")"], ["angle", "(","Expr", ",", "Expr", ")"]],
     "Funcion":    [["abs"], ["Sin"], ["Cos"], ["Tan"]],
 }
 NONTERMINALS = set(GRAMMAR)
-TERMINALS = {"id", "num", "=", ";", ",", "°", "print", "(", ")", "+", "-", "*", "/", "%",
+TERMINALS = {"id", "num", "=", ";", ",", "angle", "print", "(", ")", "+", "-", "*", "/", "%",
             "abs", "Sin", "Cos", "Tan"}
 START = "Programa"
 
@@ -140,6 +140,7 @@ TOKEN_TO_TERMINAL = {
     "LPAREN": "(", "RPAREN": ")", "PLUS": "+", "MINUS": "-",
     "STAR": "*", "SLASH": "/", "PERCENT": "%",
     "abs": "abs", "Sin": "Sin", "Cos": "Cos", "Tan": "Tan", "print": "print",
+    "COMA": ",", "angle": "angle", 
     "EOF": END,
 }
 

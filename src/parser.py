@@ -13,7 +13,7 @@ Gramática implementada:
     Funcion     -> abs | Sin | Cos | Tan
 """
 
-from .ast_nodes import Program, Assign, Print, Num, Var, UnaryMinus, BinOp, FuncCall
+from .ast_nodes import Program, Assign, Print, Num, Var, UnaryMinus, BinOp, FuncCall, Angle
 
 
 class SyntaxErrorLL1(Exception):
@@ -93,7 +93,7 @@ class Parser:
             tok = self.advance()
             right = self.parse_term()
             return self.parse_expr_prime(BinOp("-", left, right, tok.line))
-        if self.current.type in ("SEMI", "RPAREN"):
+        if self.current.type in ("SEMI", "RPAREN", "COMA"):
             return left
         raise SyntaxErrorLL1(
             f"Operador o fin de expresión inválido: '{self.current.value or self.current.type}' "
@@ -112,7 +112,7 @@ class Parser:
             op = {"STAR": "*", "SLASH": "/", "PERCENT": "%"}[op_tok.type]
             right = self.parse_factor()
             return self.parse_term_prime(BinOp(op, left, right, op_tok.line))
-        if self.current.type in ("PLUS", "MINUS", "SEMI", "RPAREN"):
+        if self.current.type in ("PLUS", "MINUS", "SEMI", "RPAREN", "COMA"):
             return left
         raise SyntaxErrorLL1(
             f"Operador o fin de expresión inválido: '{self.current.value or self.current.type}' "
@@ -142,6 +142,15 @@ class Parser:
             expr = self.parse_expr()
             self.expect("RPAREN")
             return FuncCall(tok.type, expr, tok.line)
+        if tok.type == "ANGLE":
+            self.advance()
+            self.expect("LPAREN")
+            expr1 = self.parse_expr()
+            self.expect("COMA")
+            expr2 = self.parse_expr()
+            self.expect("RPAREN")
+            return Angle(expr1, expr2, tok.line)
+        
         raise SyntaxErrorLL1(
             f"Se esperaba un valor, variable, '(' o función, pero se encontró "
             f"'{tok.value or tok.type}' en línea {tok.line}, columna {tok.col}"

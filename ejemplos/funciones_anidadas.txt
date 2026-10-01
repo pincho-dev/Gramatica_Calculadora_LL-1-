@@ -1,0 +1,6 @@
+x = Sin(Cos(0));
+print(x);
+y = Tan(Sin(0));
+print(y);
+z = abs(-abs(-5));
+print(z);

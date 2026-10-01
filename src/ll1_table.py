@@ -14,8 +14,8 @@ GRAMMAR = {
     "Funcion":    [["abs"], ["Sin"], ["Cos"], ["Tan"]],
 }
 NONTERMINALS = set(GRAMMAR)
-TERMINALS = {"id", "num", "=", ";", "print", "(", ")", "+", "-", "*", "/", "%",
-             "abs", "Sin", "Cos", "Tan"}
+TERMINALS = {"id", "num", "=", ";", ",", "°", "print", "(", ")", "+", "-", "*", "/", "%",
+            "abs", "Sin", "Cos", "Tan"}
 START = "Programa"
 
 

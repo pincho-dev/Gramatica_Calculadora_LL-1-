@@ -8,11 +8,11 @@ def test_gramatica_sin_conflictos_ll1():
 
 
 def test_primeros_factor_incluye_todas_las_formas():
-    assert PRIMEROS["Factor"] == {"(", "id", "num", "-", "abs", "Sin", "Cos", "Tan"}
+    assert PRIMEROS["Factor"] == {"(", "id", "num", "-", "abs", "Sin", "Cos", "Tan", "Angle"}
 
 
 def test_siguientes_expr_prima():
-    assert SIGUIENTES["Expr'"] == {";", ")"}
+    assert SIGUIENTES["Expr'"] == {";", ")", ","}
 
 
 def test_trace_acepta_programa_valido():

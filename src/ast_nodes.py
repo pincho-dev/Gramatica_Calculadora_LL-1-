@@ -1,4 +1,3 @@
-"""Nodos del árbol de sintaxis abstracta (AST) que produce el parser."""
 
 from dataclasses import dataclass
 from typing import List, Union
@@ -37,7 +36,6 @@ class FuncCall:
     line: int
 
 
-Expr = Union[Num, Var, UnaryMinus, BinOp, FuncCall]
 
 
 @dataclass
@@ -59,3 +57,11 @@ Stmt = Union[Assign, Print]
 @dataclass
 class Program:
     statements: List[Stmt]
+
+@dataclass
+class Angle:
+    expr1: Expr
+    expr2: Expr
+    line: int
+    
+Expr = Union[Num, Var, UnaryMinus, BinOp, FuncCall, Angle]

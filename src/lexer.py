@@ -10,7 +10,7 @@ en la Clase 3 (Análisis Léxico) del curso.
 import re
 from dataclasses import dataclass
 
-KEYWORDS = {"abs", "Sin", "Cos", "Tan", "print"}
+KEYWORDS = {"abs", "Sin", "Cos", "Tan", "print", "angle"}
 
 
 @dataclass
@@ -30,6 +30,7 @@ _TOKEN_SPEC = [
     ("ID", r"[a-zA-Z_][a-zA-Z_0-9]*"),
     ("ASSIGN", r"="),
     ("SEMI", r";"),
+    ("COMA", r","),
     ("LPAREN", r"\("),
     ("RPAREN", r"\)"),
     ("PLUS", r"\+"),
@@ -40,6 +41,7 @@ _TOKEN_SPEC = [
     ("NEWLINE", r"\n"),
     ("SKIP", r"[ \t]+"),
     ("MISMATCH", r"."),
+    ("ANGLE", r"°"),
 ]
 
 _MASTER_RE = re.compile("|".join(f"(?P<{nombre}>{patron})" for nombre, patron in _TOKEN_SPEC))

@@ -1,14 +1,11 @@
 """
 Intérprete: recorre el AST y ejecuta el programa (evalúa expresiones,
 guarda variables, imprime resultados de `print(...)`).
-
-Las funciones trigonométricas usan radianes (convención de math.sin/cos/tan
-en Python) — Sin(0)=0.0, Cos(0)=1.0, Tan(0)=0.0.
 """
 
 import math
 
-from .ast_nodes import Assign, Print, Num, Var, UnaryMinus, BinOp, FuncCall
+from .ast_nodes import Assign, Print, Num, Var, UnaryMinus, BinOp, FuncCall, Angle
 
 
 class RuntimeErrorLL1(Exception):
@@ -54,6 +51,8 @@ class Interpreter:
             return -self._eval(expr.expr)
         if isinstance(expr, FuncCall):
             return FUNCS[expr.name](self._eval(expr.arg))
+        if isinstance(expr, Angle):
+            return math.atan2(self._eval(expr.expr1), self._eval(expr.expr2))
         if isinstance(expr, BinOp):
             left = self._eval(expr.left)
             right = self._eval(expr.right)

@@ -171,6 +171,20 @@ línea/columna y detienen la ejecución:
 python3 -m src.main ejemplos/error_sintactico.txt
 python3 -m src.main ejemplos/error_semantico.txt
 python3 -m src.main ejemplos/division_cero.txt
+python3 -m src.main ejemplos/error_lexico.txt            # carácter no reconocido (Lex)
+python3 -m src.main ejemplos/error_parentesis.txt        # paréntesis sin cerrar (Sintáctico)
+python3 -m src.main ejemplos/error_sin_punto_coma.txt    # falta ';' (Sintáctico)
+python3 -m src.main ejemplos/modulo_cero.txt             # % por constante 0 (Semántico)
+python3 -m src.main ejemplos/division_variable_cero.txt  # / por variable en 0, mismo valor
+                                                           # pero detectado en runtime, no en
+                                                           # semántica (contrastar con division_cero.txt)
+```
+
+Casos especiales de la gramática (programas válidos, sin error):
+
+```bash
+python3 -m src.main ejemplos/funciones_anidadas.txt         # Funcion(Expr) y "- Factor" anidados
+python3 -m src.main ejemplos/precedencia_asociatividad.txt  # precedencia +/* y asociatividad izquierda
 ```
 
 ## 8. Pruebas de implementación
